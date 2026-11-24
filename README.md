@@ -1,172 +1,107 @@
 # TiktokPatchXposed
 
-**Русский** | [English](README-EN.md)
+[![CI](https://github.com/itswill00/TiktokPatchXposed/actions/workflows/android.yml/badge.svg)](https://github.com/itswill00/TiktokPatchXposed/actions/workflows/android.yml)
+[![Release](https://img.shields.io/github/v/release/itswill00/TiktokPatchXposed)](https://github.com/itswill00/TiktokPatchXposed/releases/latest)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Platform](https://img.shields.io/badge/platform-Android%208.1%2B-green.svg)](https://www.android.com/)
 
-LSPosed-модуль для TikTok. Убирает рекламу, даёт скачивать что угодно в нужном качестве,
-включает функции, которые TikTok открывает не всем, и добавляет много мелочей: автопрокрутку
-везде, свой цвет, шрифт и AMOLED-тему, скрытие элементов, флаги стран, невидимку и автоогоньки.
-Все настройки находятся прямо внутри TikTok.
+**English** | [Russian](README-RU.md)
 
-Текущая версия — **4.5.0**. Проверено на **TikTok 47.6.3**, **47.5.3**, **47.4.3** и **47.1.4** (Google Play и universal APK),
-**Android 16**. Большинство функций сами находят нужные места в TikTok, поэтому
-переживают его обновления.
+An [LSPosed](https://github.com/JingMatrix/LSPosed) module for TikTok. It removes ads, lets you download anything in the quality you want, turns on features TikTok rolls out only to some people, and adds many small things: auto-scroll everywhere, your own color, font and AMOLED theme, hiding parts of the screen, country flags, invisible mode and auto streaks. All settings live right inside TikTok.
+
+> **Current version: 4.5.0** · Tested on TikTok **47.6.3**, **47.5.3**, **47.4.3**, **47.1.4** (Google Play and universal APK), **Android 16**. A static compatibility check has also been done against TikTok global **47.9.3**.
+
+## Contents
+
+- [Highlights](#highlights)
+- [Screenshots](#screenshots)
+- [Installation](#installation)
+- [Documentation](#documentation)
+- [Building](#building)
+- [Compatibility](#compatibility)
+- [Limitations](#limitations)
+- [Disclaimer](#disclaimer)
+
+## Highlights
+
+| Area | Examples |
+| --- | --- |
+| **Feed** | no ads, hide LIVE and "People you may know", only fresh/unseen videos, own filter by words, authors, countries, likes, views and duration |
+| **Playback** | auto-scroll everywhere, exact dates and counts, own speeds, 3×, refresh rate, seek on every video, separate Wi-Fi/mobile quality |
+| **Interface** | own accent color and font, AMOLED theme, hide elements, opacity, burn-in protection, time on messages |
+| **Comments** | translate buttons and auto-translate, copy text only, author flags, comment reposts |
+| **Downloads** | no watermark, quality picker, carousels, stickers, stories, avatars, LIVE recording, clean links |
+| **Privacy** | invisible mode, hide typing/online/read, block trackers, random device ID |
+| **Region & streaks** | SIM country, recommendations in your language, auto streaks with flames or stickers |
+| **Experiments** | hidden TikTok features, no forced login, no hashtag limit, camera extras |
+
+See the [full feature reference](docs/FEATURES.md). Features marked 🧪 work but are not fully tested. All new features are off by default.
+
+## Screenshots
 
 <details>
-<summary><b>Скриншоты</b></summary>
+<summary>Show screenshots</summary>
 
 <p align="center">
-  <img src="docs/media/main.png" width="250" alt="Главный экран настроек модуля">
-  <img src="docs/media/status.png" width="250" alt="Состояние функций">
-  <img src="docs/media/interface.png" width="250" alt="Раздел «Интерфейс»">
+  <img src="docs/media/main-en.png" width="250" alt="The module's main settings screen">
+  <img src="docs/media/status-en.png" width="250" alt="Feature status">
+  <img src="docs/media/interface-en.png" width="250" alt="The Interface section">
 </p>
+
 <p align="center">
-  <img src="docs/media/hide.png" width="250" alt="Скрытие элементов">
-  <img src="docs/media/color.png" width="250" alt="Свой цвет акцента">
-  <img src="docs/media/downloads.png" width="250" alt="Загрузки и ссылки">
+  <img src="docs/media/hide-en.png" width="250" alt="Hide elements">
+  <img src="docs/media/color-en.png" width="250" alt="Own accent color">
+  <img src="docs/media/downloads-en.png" width="250" alt="Downloads and links">
 </p>
+
 </details>
 
-## Установка
+## Installation
 
-**Что нужно:** Android 8.1 или новее, root и [LSPosed](https://github.com/JingMatrix/LSPosed)
-(libxposed 101–102 или старый LSPosed 1.9.x), TikTok из Google Play (`com.zhiliaoapp.musically`).
+**You need:** Android 8.1+, root and [LSPosed](https://github.com/JingMatrix/LSPosed) (libxposed 101–102 or old LSPosed 1.9.x), TikTok from Google Play (`com.zhiliaoapp.musically`).
 
-1. Скачайте APK из последнего [релиза](https://github.com/hik0w/TiktokPatchXposed/releases/latest) и установите.
-2. В LSPosed включите модуль и отметьте TikTok.
-3. Принудительно остановите TikTok и откройте снова.
+1. Download the APK from the latest [release](https://github.com/itswill00/TiktokPatchXposed/releases/latest) and install it.
+2. In LSPosed, enable the module and tick TikTok.
+3. Force-stop TikTok and open it again.
 
-**Настройки:** TikTok → Профиль → ☰ → Настройки и конфиденциальность → **TiktokPatchXposed**
-(первая строка). Экран переведён на 13 языков (в том числе арабский и китайский) и следует языку TikTok. Если настройка требует
-перезапуска, внизу появится кнопка «Перезапустить». Обновление — новый APK поверх старого,
-настройки сохраняются.
+**Settings:** `TikTok → Profile → ☰ → Settings and privacy → TiktokPatchXposed` (the first row). The screen is translated into 13 languages, including Arabic and Chinese, and follows TikTok's language. When a setting needs a restart, a **Restart** button appears at the bottom. To update, install the new APK over the old one; settings are kept.
 
-Функции с пометкой 🧪 работают, но проверены не до конца. Все новые функции по умолчанию выключены.
+## Documentation
 
-<details>
-<summary><b>Все функции</b></summary>
+| Document | About |
+| --- | --- |
+| [Full feature reference](docs/FEATURES.md) | Every feature by area, with the 🧪 legend |
+| [Building](docs/BUILDING.md) | JDK/SDK, `build.sh`, Telegram upload, Gradle and CI |
+| [Troubleshooting](docs/TROUBLESHOOTING.md) | Common problems, safe mode, limitations, bug reports |
+| [Contributing](CONTRIBUTING.md) | Branches, signed commits, tests, code layout |
+| [Docs index](docs/README.md) | All documents in one place |
+| [Russian README](README-RU.md) | Russian translation |
 
-### Лента
-- **Без рекламы** — в ленте, при запуске, внутри видео и в других списках роликов.
-- **Скрыть LIVE** — трансляции в ленте и кнопка LIVE.
-- **Скрыть «Вероятные знакомые»** — ролики и целые карточки с людьми из ваших контактов.
-- **Скрыть платное и товары**, **скрыть ролики с ИИ**.
-- **Только свежие видео** — скрывает рекомендации старше выбранного срока.
-- **Скрывать уже просмотренные** — модуль запоминает видео, которые вы смотрели, и убирает их, если TikTok пришлёт снова.
-- **Свой фильтр** — по словам, хэштегам, авторам, странам, минимуму лайков/просмотров и длительности видео.
-
-### Просмотр
-- **Автопрокрутка везде** — в поиске, подписках и чатах; в профилях и понравившихся свой переключатель в меню долгого
-  нажатия. По умолчанию выключена везде; фото-посты по длине музыки.
-- **Точная дата и время** — у видео, историй, комментариев и репостов, по желанию с секундами.
-- **Числа без округления** — лайки, комментарии, репосты, просмотры и счётчики профиля полностью.
-- 🧪 **Без лайка двойным касанием** — сердце по двойному тапу больше не ставится.
-- 🧪 **Картинка в картинке** — плавающее окно видео от самого TikTok.
-- **Скорость 3×** в стандартном меню скорости.
-- **Частота экрана** — держать 60, 90 или 120 Гц: TikTok больше не снижает её до частоты видео.
-- **Свои скорости** и **запоминать скорость**.
-- **Продолжать с того же места**, **не сбрасывать «Очистить экран»**.
-- **Перемотка на всех видео** — на коротких полоса не видна, тяните пальцем по нижнему краю видео.
-- 🧪 **Звук в заглушённых видео** — возвращает звук, выключенный из-за авторских прав, если он ещё есть в видео.
-- **Качество отдельно по Wi-Fi и мобильной сети** (лучшее, экономия или как решит TikTok), 🧪 **видео в H.264**,
-  **без HDR**, 🧪 **фото в лучшем качестве** (до 8 Мп).
-
-### Интерфейс
-- **Свой цвет акцента** — палитра или HEX; перекрашивает красный TikTok в кнопках, значках, лайках и нике.
-- **Свой шрифт** — системный или любой `.ttf` / `.otf` с телефона вместо TikTok Sans.
-- **AMOLED-тема** — чисто чёрный фон, сама включает тёмную тему TikTok.
-- **Скрытие элементов** — кнопки справа, диск музыки, автор и подпись, кнопка Tako.
-- **Прозрачность интерфейса**, **защита OLED от выгорания** и **не менять яркость** (TikTok больше не выкручивает её в камере и редакторе).
-- **Новый вид профиля**, 🧪 **дата создания аккаунта** под ником, **скрыть истории во «Входящих»**.
-- **Время у сообщений** — под каждым сообщением в чате.
-- **«Прочитать все»** — зажмите вкладку «Входящие».
-- 🧪 **Сохранять удалённые сообщения** — сообщение, которое собеседник удалил, остаётся с красной пометкой «Удалено»; фото, видео и стикеры — пока в бета-режиме.
-
-### Комментарии
-- **Кнопки перевода TikTok** — значок у каждого иностранного комментария и «Перевести все» в шапке
-  комментариев, даже если TikTok их вам не показывал.
-- **Автоперевод комментариев** — сразу включает перевод TikTok для всех комментариев.
-- **Копировать только текст**, **страна автора** (флаг у даты видео, в профиле и в комментариях), **@ник у комментаторов**.
-- **Подробности по флагу** — нажатие на флаг открывает регион аккаунта и видео, языки и отмеченное место.
-- **Репосты с комментарием**; 🧪 **репост своих видео**.
-- 🧪 **До 9 фото в комментарии**.
-
-### Загрузки и ссылки
-- **Без водяного знака**, **скачивание любого видео**, **выбор качества** и «Только звук».
-- **Все фото из карусели**, **стикеры и фото из комментариев**, **стикеры из чатов**.
-- **Скачивание историй и подборок** (удерживайте палец на истории) и **аватарок** (удерживайте открытую аватарку).
-- 🧪 **Запись LIVE** — кнопка REC в эфире записывает его в выбранном качестве в Movies/TikTok (MP4) или копирует ссылку на поток. Android 10+.
-- **Папка и имена файлов** — куда сохранять (по типу, Download или DCIM) и шаблон имени: автор, дата, качество.
-- 🧪 **Загрузка в HD** — как с включённым «Загружать в HD», и 🧪 выбор битрейта: 12, 20 или 30 Мбит/с.
-- 🧪 **Загрузка оригинала (до 4K)** — видео без правок уходит самим файлом, без пережатия TikTok.
-- **Чистые ссылки** (без меток отслеживания), **ссылки в браузере**, **скриншоты везде**.
-
-### Приватность
-- 🧪 **Невидимка** — не отмечаться в просмотрах историй, подборок (отдельный переключатель, 🧪), профилей и видео у подписок. На телефоне история при этом считается просмотренной.
-- **В чатах:** скрыть «печатает…», 🧪 «в сети» и 🧪 «прочитано» (с кнопкой «Отметить прочитанным» в меню сообщения
-  и «Прочитано» при ответе).
-- 🧪 **Блокировать местоположение**, 🧪 **скрыть VPN**, 🧪 **случайный ID устройства**, 🧪 **скрыть root**,
-  🧪 **без отслеживания движения**, **без предложений passkey**.
-- **Аналитика:** блокировать сторонние трекеры (Google/Firebase, Facebook, AppsFlyer) и 🧪 не отправлять аналитику TikTok.
-
-### Регион
-- **Страна** — SIM-карта, оператор и часовой пояс около 190 стран (по умолчанию Германия).
-- **Рекомендации на моём языке**.
-- 🧪 **Свой регион рекомендаций** — SIM остаётся в выбранной стране, а лента подбирается из другой.
-
-Регион аккаунта и IP-адрес модуль не меняет, поэтому результат не гарантирован.
-
-### Огоньки
-- **Автоогоньки** — продлевают уже существующие огоньки в личных чатах, пока TikTok открыт.
-  Отправка, когда огонёк начинает гаснуть, или в своё время (если огонёк сгорит раньше, он уйдёт
-  за час до конца). Огонёк или стикер из избранного, всем или только выбранным чатам; в настройках
-  видно, как это будет выглядеть в чате. Если вы уже писали в этот чат сегодня (в том числе с
-  другого телефона), повторно не отправляется. Если TikTok не принял огонёк, придёт уведомление.
-
-### Эксперименты
-- **Скрытые функции TikTok** — ускорение по удержанию, аудио- и фотокомментарии, комментарии в избранное и другое.
-- 🧪 **Без обязательного входа**, 🧪 **без лимита хештегов**, 🧪 **функции камеры** (телесуфлёр, гринскрин).
-
-### Экран настроек
-Вкладка «Главное» с самыми нужными функциями и «Все» с полным списком. Поиск по настройкам, сколько функций включено в каждом разделе, «Состояние функций» (что нашлось в вашей версии
-TikTok и почему что-то не нашлось). В «Ещё»: экспорт и импорт настроек в файл `.json`, сброс всех настроек и
-**отчёт об ошибке** (лог, падения, устройство — приложите к issue). Если TikTok три раза подряд закрылся сразу
-после запуска, модуль один запуск работает в **безопасном режиме**, чтобы можно было сохранить отчёт.
-</details>
-
-<details>
-<summary><b>Если что-то не работает</b></summary>
-
-- **Модуля нет в настройках TikTok** — проверьте, что модуль включён в LSPosed и TikTok отмечен,
-  затем принудительно остановите TikTok.
-- **Функция пропала после обновления TikTok** — откройте «Состояние функций». Если там «Не нашлось
-  в этой версии TikTok», напишите в [issues](https://github.com/hik0w/TiktokPatchXposed/issues) с версией TikTok.
-- **TikTok показывает «Восстановите работу приложения»** — нажимайте **«Отмена»**: восстановление
-  сбрасывает данные TikTok.
-- **Ограничения:** иконку TikTok поменять нельзя; часть элементов, нарисованных картинками, может
-  остаться в цветах TikTok.
-</details>
-
-<details>
-<summary><b>Совместимость и сборка</b></summary>
-
-Модуль цепляется только за читаемые имена TikTok, а запутанные места находит сам при первом
-запуске новой версии (по строкам и сигнатурам) и запоминает. Поддерживаются сжатый код (беты,
-universal APK), переезд классов и TikTok, пропатченный через LSPatch. Каждая функция запускается
-отдельно: если одна не нашлась, остальные работают.
-
-Сборка: Java 17 и Android SDK 36.
+## Building
 
 ```shell
-cd source
-./gradlew testDebugUnitTest assembleRelease
+./build.sh
 ```
 
-APK появится в `source/app/build/outputs/apk/release/`.
-</details>
+The script runs the unit tests, builds debug and release, uploads new APKs to Telegram and prints a compact summary. Options and manual Gradle commands are in [docs/BUILDING.md](docs/BUILDING.md).
 
-## Предупреждение
+## Compatibility
 
-Модификация клиента и автоматические действия могут привести к ограничениям аккаунта.
-Используйте на свой страх и риск. Это неофициальный проект, он не связан с TikTok и ByteDance.
+The module hooks only TikTok's readable names. Obfuscated places are discovered by strings and signatures on the first launch of a new version, then cached. Compressed code (betas, universal APKs), relocated classes and LSPatch-patched installs are supported. Each feature starts separately: if one is not found, the others keep working.
 
-Лицензия **MIT**, см. [LICENSE](LICENSE).
+## Limitations
+
+- The TikTok icon cannot be changed.
+- Some elements drawn as images may keep TikTok's original colors.
+- TikTok's servers may reject very long comments, multi-photo comments or hashtag changes.
+- Region spoofing does not change your account region or IP address, so the result is not guaranteed.
+
+See [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) for details.
+
+## Disclaimer
+
+> Modifying the client and automated actions can lead to account restrictions. Use at your own risk. This is an unofficial project, not affiliated with TikTok or ByteDance.
+
+## License
+
+[MIT](LICENSE) © TiktokPatchXposed contributors.
