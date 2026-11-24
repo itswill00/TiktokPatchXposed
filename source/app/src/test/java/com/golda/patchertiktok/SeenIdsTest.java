@@ -37,6 +37,27 @@ public class SeenIdsTest {
     }
 
     @Test
+    public void tinyCapacitiesStillBehaveLikeBoundedSets() {
+        for (int capacity : new int[]{0, 1, 2, 3}) {
+            SeenIds ids = new SeenIds(capacity);
+            assertEquals(0, ids.size());
+            assertFalse(ids.add(0));
+            for (int i = 1; i <= 6; i++) {
+                assertTrue(ids.add(i));
+                assertTrue(ids.contains(i));
+                assertFalse(ids.add(i));
+            }
+            int kept = Math.max(2, capacity);
+            assertEquals(kept, ids.size());
+            assertEquals(kept, ids.toArray().length);
+            assertFalse(ids.contains(1));
+            ids.clear();
+            assertEquals(0, ids.size());
+            assertFalse(ids.contains(6));
+        }
+    }
+
+    @Test
     public void matchesASimpleModelOverManyEvictions() {
         int capacity = 1_000;
         SeenIds ids = new SeenIds(capacity);

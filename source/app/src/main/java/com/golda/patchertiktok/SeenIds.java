@@ -13,8 +13,10 @@ final class SeenIds {
     private int size;
 
     SeenIds(int capacity) {
-        ring = new long[capacity];
-        int slots = Integer.highestOneBit(capacity * 3 / 2 - 1) << 1;
+        // Even a tiny set needs a probe table with spare slots: the hash can land on any of them.
+        int size = Math.max(2, capacity);
+        ring = new long[size];
+        int slots = Math.max(4, Integer.highestOneBit(size * 3 / 2 - 1) << 1);
         table = new long[slots];
         mask = slots - 1;
     }
