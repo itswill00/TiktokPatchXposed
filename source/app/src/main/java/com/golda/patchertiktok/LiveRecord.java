@@ -398,7 +398,10 @@ final class LiveRecord {
             Object pull = Reflect.get(Reflect.get(Reflect.get(room, "streamUrl"), "liveCoreSDKData"), "pullData");
             data = Reflect.get(pull, "streamData");
         }
-        return data instanceof String && ((String) data).contains("flv") ? (String) data : null;
+        if (data instanceof String && ((String) data).contains("flv")) return (String) data;
+        // Some server responses move the stream into the extra field instead.
+        Object extra = Reflect.call(room, "getExtraStreamData");
+        return extra instanceof String && ((String) extra).contains("flv") ? (String) extra : null;
     }
 
     private static void copyLink(Activity activity, String url) {
