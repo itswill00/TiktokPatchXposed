@@ -75,6 +75,14 @@ public class CommentTranslatePolicyTest {
         assertEquals(1001, gate.delay(1100));
     }
 
+    @Test public void expiryRemovesEveryStaleEntryEvenWhenTimesAreOutOfOrder() {
+        CommentTranslatePolicy.Gate gate = new CommentTranslatePolicy.Gate(2, 1000);
+        gate.remember("a", 1000);
+        gate.remember("b", 0);
+        assertFalse(gate.seen("c", 1001));
+        assertTrue(gate.acquire("c", 1001, 5));
+    }
+
     @Test public void ratesHaveFiniteBounds() {
         assertEquals(1, CommentTranslatePolicy.rate(Integer.MIN_VALUE));
         assertEquals(2, CommentTranslatePolicy.rate(2));

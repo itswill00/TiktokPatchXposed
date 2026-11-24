@@ -114,8 +114,10 @@ final class CommentTranslatePolicy {
             Iterator<Map.Entry<String, Long>> iterator = attempts.entrySet().iterator();
             while (iterator.hasNext()) {
                 Map.Entry<String, Long> entry = iterator.next();
-                if (now - entry.getValue() < ttlMs) break;
-                iterator.remove();
+                // Insertion order is not guaranteed to be chronological: a remembered key can be
+                // refreshed, and elapsedRealtime can jump. Remove every stale entry, not just the
+                // first one, or a full table would block new ids forever.
+                if (now - entry.getValue() >= ttlMs) iterator.remove();
             }
         }
     }
