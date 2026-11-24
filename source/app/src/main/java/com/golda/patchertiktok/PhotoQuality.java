@@ -27,11 +27,17 @@ final class PhotoQuality {
         if (info == null) return;
         int hooks = 0;
         for (String hit : Discovery.methodsUsing(CONVERTER)) {
-            Class<?> owner = Hooks.findClass(hit.split("#", 2)[0], loader);
+            int split = hit.indexOf('#');
+            if (split < 0) continue;
+            // 47.9.3 added another static method taking PhotoModeImageInfo on the same helper.
+            // Hook only the method that actually logs the converter fingerprint.
+            String converter = hit.substring(split + 1);
+            Class<?> owner = Hooks.findClass(hit.substring(0, split), loader);
             if (owner == null) continue;
             for (Method method : Reflect.methods(owner)) {
                 Class<?>[] p = method.getParameterTypes();
-                if (!Modifier.isStatic(method.getModifiers()) || p.length == 0 || p[0] != info) continue;
+                if (!method.getName().equals(converter) || !Modifier.isStatic(method.getModifiers())
+                        || p.length == 0 || p[0] != info) continue;
                 Hooks.hook(method, new Hooks.Hook() {
                     @Override protected void before(Hooks.Call param) {
                         if (Prefs.on(Prefs.PHOTO_BEST)) upgrade(param.args[0]);
