@@ -99,7 +99,7 @@ Results are written as XML to `source/app/build/test-results/testDebugUnitTest/`
 
 The module hooks readable TikTok names and discovers obfuscated places by strings and signatures on the first launch of a new version, then caches them. Compressed code (betas, universal APKs), relocated classes and LSPatch-patched installs are supported. Each feature starts separately: if one is not found, the others keep working.
 
-Version 4.5.0 was tested on TikTok 47.6.3, 47.5.3, 47.4.3 and 47.1.4. The code has also been statically checked against TikTok global 47.9.3; on-device verification is still recommended after any TikTok update.
+Version 4.5.0 was tested on TikTok 47.6.3, 47.5.3, 47.4.3 and 47.1.4. A static check against TikTok global 47.9.3 confirmed that all hardcoded class names and all discovery fingerprints used by the module are still present, including `friend_recommend_card`, `DM_STICKER_PANEL`, both root probes and the remember-speed anchors. On-device verification is still recommended after any TikTok update.
 
 ---
 
