@@ -103,6 +103,9 @@ final class AbOverrides {
         }
         if (Prefs.on(Prefs.CAMERA_EXTRAS)) {
             VALUES.put("camera_teleprompter_mode", 1);
+            // 47.9.3 still reads the teleprompter key. The standalone green-screen key was not
+            // found as a const-string in 47.9.3, so on that build this override is a harmless
+            // no-op; the green-screen switch itself is controlled by TikTok's camera config.
             VALUES.put("video_capture_green_screen_standalone", true);
         }
         if (Prefs.on(Prefs.EXTRA_FEATURES)) {
