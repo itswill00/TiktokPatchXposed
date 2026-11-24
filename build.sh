@@ -130,18 +130,16 @@ upload_one() {
         return 1
     fi
     caption="$(cat <<EOF
-<b>TiktokPatchXposed</b> · <b>${variant}</b>
-Version ${VER} (${CODE}) · commit <code>${COMMIT}</code>
-Branch: <code>${BRANCH}</code>
-Tests: ${TESTS}
-SHA-256: <code>${hash:0:12}…</code>
+*TiktokPatchXposed* · ${variant}
+\`v${VER} (${CODE})\` · commit \`${COMMIT}\` · branch \`${BRANCH}\`
+tests \`${TESTS}\` · sha \`${hash:0:12}\`
 EOF
 )"
     response="$(curl -sS --fail --retry 3 --connect-timeout 10 --max-time 180 \
         -X POST \
         -F "chat_id=${CHAT}" \
         -F "document=@${apk}" \
-        -F "parse_mode=HTML" \
+        -F "parse_mode=Markdown" \
         --form-string "caption=${caption}" \
         "https://api.telegram.org/bot${TOKEN}/sendDocument" 2>&1)"
     if [[ $? != 0 ]] || ! grep -q '"ok"[[:space:]]*:[[:space:]]*true' <<<"$response"; then
