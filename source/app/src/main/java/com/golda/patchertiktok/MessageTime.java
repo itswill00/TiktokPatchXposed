@@ -72,7 +72,9 @@ final class MessageTime {
                     || Modifier.isAbstract(method.getModifiers()) || method.getReturnType() != void.class
                     || p.length != 1 || p[0].isPrimitive() || p[0] == Object.class || p[0] == String.class
                     || View.class.isAssignableFrom(p[0]) || p[0].getName().startsWith("java.")) continue;
-            if (found != null) return null;
+            // New builds may add a second eligible binder. Hooking the first one is better than
+            // silently installing nothing when the uniqueness rule no longer holds.
+            if (found != null) return found;
             found = method;
         }
         return found;
