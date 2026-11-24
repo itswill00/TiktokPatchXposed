@@ -59,6 +59,24 @@ public class FilterRulesTest {
         assertFalse(rules.hides("", null, "spammer2", "x", -1, -1));
     }
 
+    @Test public void durationBoundsAreInclusiveAndSkipUnknownLength() {
+        FilterRules rules = FilterRules.parse("", "", 0, 0, 10, 30, null);
+        assertFalse(rules.isEmpty());
+        assertTrue(rules.hides("", null, "u", "n", -1, -1, 9_999));
+        assertFalse(rules.hides("", null, "u", "n", -1, -1, 10_000));
+        assertFalse(rules.hides("", null, "u", "n", -1, -1, 30_000));
+        assertTrue(rules.hides("", null, "u", "n", -1, -1, 31_000));
+        assertFalse(rules.hides("", null, "u", "n", -1, -1, -1));
+        assertFalse(rules.hides("", null, "u", "n", -1, -1, 0));
+    }
+
+    @Test public void reversedDurationBoundsAreSwapped() {
+        FilterRules rules = FilterRules.parse("", "", 0, 0, 30, 10, null);
+        assertTrue(rules.hides("", null, "u", "n", -1, -1, 9_000));
+        assertFalse(rules.hides("", null, "u", "n", -1, -1, 20_000));
+        assertTrue(rules.hides("", null, "u", "n", -1, -1, 31_000));
+    }
+
     @Test public void minimumLikesAndViewsSkipUnknownStatistics() {
         FilterRules rules = FilterRules.parse("", "", 100, 1000);
         assertTrue(rules.hides("", null, "u", "n", 99, 5000));

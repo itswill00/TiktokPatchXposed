@@ -2447,6 +2447,10 @@ public final class ModSettingsActivity extends Activity {
         LinearLayout minimum = page.card();
         numberRow(minimum, I18n.get(S.FILTER_MIN_LIKES), Prefs.FILTER_MIN_LIKES);
         numberRow(minimum, I18n.get(S.FILTER_MIN_VIEWS), Prefs.FILTER_MIN_VIEWS);
+        page.section(I18n.get(S.FILTER_DURATION));
+        LinearLayout duration = page.card();
+        numberRow(duration, I18n.get(S.FILTER_MIN_SECONDS), Prefs.FILTER_MIN_SECONDS);
+        numberRow(duration, I18n.get(S.FILTER_MAX_SECONDS), Prefs.FILTER_MAX_SECONDS);
         page.footer(I18n.get(S.FILTER_FOOTER));
         return page.root;
     }

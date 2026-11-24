@@ -52,7 +52,7 @@ Features marked 🧪 work but are not fully tested. All new features are off by 
 - **Hide paid content and products**, **hide AI videos**.
 - **Only fresh videos**: hides recommendations older than the chosen period.
 - **Hide videos I've seen**: the module remembers what you watched and leaves it out when TikTok sends it again.
-- **Own filter**: by words, hashtags, authors, countries, minimum likes and views.
+- **Own filter**: by words, hashtags, authors, countries, minimum likes/views and video duration.
 
 ### Playback
 - **Auto-scroll everywhere**: in search, following and chats; profiles and liked videos have their own switch in the

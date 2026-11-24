@@ -56,7 +56,10 @@ final class ContentFilter {
         if (rules.hasCountries() && rules.hidesCountry(region(author, aweme))) return true;
         String username = author == null ? null : string(Reflect.call(author, "getUniqueId"));
         String nickname = author == null ? null : string(Reflect.call(author, "getNickname"));
-        return rules.hides(string(Reflect.call(aweme, "getDesc")), hashtags(aweme), username, nickname, likes, views);
+        Object duration = Reflect.call(aweme, "getDuration");
+        long millis = duration instanceof Number ? ((Number) duration).longValue() : -1;
+        return rules.hides(string(Reflect.call(aweme, "getDesc")), hashtags(aweme), username, nickname,
+                likes, views, millis);
     }
 
     /** The author's region, or the video's when the author has none, as the country flag shows it. */

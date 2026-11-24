@@ -86,6 +86,9 @@ final class Prefs {
     static final String FILTER_COUNTRIES = "filter_countries";
     static final String FILTER_MIN_LIKES = "filter_min_likes";
     static final String FILTER_MIN_VIEWS = "filter_min_views";
+    /** Hide videos shorter/longer than these many seconds; 0 disables the bound. */
+    static final String FILTER_MIN_SECONDS = "filter_min_seconds";
+    static final String FILTER_MAX_SECONDS = "filter_max_seconds";
     static final String REMEMBER_CLEAN = "remember_clean_screen";
     static final String RESUME_POSITION = "resume_position";
     static final String REMEMBER_SPEED = "remember_speed";
@@ -308,7 +311,9 @@ final class Prefs {
         for (String key : new String[]{FILTER_WORDS, FILTER_AUTHORS, FILTER_COUNTRIES, SPEEDS, TRANSLATE_EXCLUDE, STREAK_STICKER,
                 STREAK_STICKER_TITLE, STREAK_STICKER_URL, STREAK_EXCLUDED, ANDROID_ID, FONT_SOURCE, FONT_FILE, FEED_REGION,
                 DOWNLOAD_NAME, DOWNLOAD_FOLDER}) TEXTS.put(key, loaded.getString(key, ""));
-        for (String key : new String[]{FILTER_MIN_LIKES, FILTER_MIN_VIEWS}) NUMBERS.put(key, loaded.getLong(key, 0));
+        for (String key : new String[]{FILTER_MIN_LIKES, FILTER_MIN_VIEWS, FILTER_MIN_SECONDS, FILTER_MAX_SECONDS}) {
+            NUMBERS.put(key, loaded.getLong(key, 0));
+        }
         NUMBERS.put(ACCENT_COLOR, loaded.getLong(ACCENT_COLOR, DEFAULT_ACCENT));
         NUMBERS.put(OVERLAY_OPACITY, loaded.getLong(OVERLAY_OPACITY, 100));
         NUMBERS.put(REFRESH_RATE, loaded.getLong(REFRESH_RATE, 0));
@@ -323,7 +328,7 @@ final class Prefs {
     /** Text strings, numbers and the region, besides the switches in {@link #DEFAULTS}. */
     private static final String[] TEXT_KEYS = {REGION, FILTER_WORDS, FILTER_AUTHORS, FILTER_COUNTRIES, SPEEDS, TRANSLATE_EXCLUDE,
             STREAK_STICKER, STREAK_STICKER_TITLE, STREAK_STICKER_URL, STREAK_EXCLUDED, FEED_REGION, DOWNLOAD_NAME, DOWNLOAD_FOLDER};
-    private static final String[] LONG_KEYS = {FILTER_MIN_LIKES, FILTER_MIN_VIEWS, ACCENT_COLOR, OVERLAY_OPACITY, REFRESH_RATE, HD_BITRATE, STREAK_TIME, QUALITY_WIFI, QUALITY_MOBILE, DOWNLOAD_PLACE};
+    private static final String[] LONG_KEYS = {FILTER_MIN_LIKES, FILTER_MIN_VIEWS, FILTER_MIN_SECONDS, FILTER_MAX_SECONDS, ACCENT_COLOR, OVERLAY_OPACITY, REFRESH_RATE, HD_BITRATE, STREAK_TIME, QUALITY_WIFI, QUALITY_MOBILE, DOWNLOAD_PLACE};
 
     /** All settings as JSON, for a backup the user keeps wherever they like. */
     static String export() {
@@ -483,7 +488,8 @@ final class Prefs {
 
     private static void rebuildRules() {
         rules = FilterRules.parse(text(FILTER_WORDS), text(FILTER_AUTHORS),
-                number(FILTER_MIN_LIKES), number(FILTER_MIN_VIEWS), text(FILTER_COUNTRIES));
+                number(FILTER_MIN_LIKES), number(FILTER_MIN_VIEWS), number(FILTER_MIN_SECONDS),
+                number(FILTER_MAX_SECONDS), text(FILTER_COUNTRIES));
     }
 
     static String snapshot() {

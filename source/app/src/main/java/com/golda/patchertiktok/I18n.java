@@ -83,7 +83,8 @@ final class I18n {
         TAB_MAIN, MODE_ALL, PICKS, ACCENT_SHORT,
         DL_PLACE, DL_PLACE_WHERE, DL_PLACE_BY_TYPE, DL_PLACE_DOWNLOAD, DL_PLACE_DCIM, DL_PLACE_FOOTER, DL_FOLDER, DL_FOLDER_FOOTER, DL_NAME, DL_NAME_FOOTER, DL_EXAMPLE,
         RI_REGION, RI_LANGUAGE, RI_VIDEO_REGION, RI_CAPTION_LANGUAGE, RI_PLACE, RI_ONLY_IN, RI_DISTANCE, RI_COMMENT_LANGUAGE, RI_TAP_COPY, RI_COPIED,
-        REGION_DETAILS, REGION_DETAILS_DESC, AGE_HOURS, AGE_HOURS_HINT
+        REGION_DETAILS, REGION_DETAILS_DESC, AGE_HOURS, AGE_HOURS_HINT,
+        FILTER_DURATION, FILTER_MIN_SECONDS, FILTER_MAX_SECONDS
     }
 
     private static final Map<String, String[]> TABLES = new HashMap<>();
@@ -148,7 +149,8 @@ final class I18n {
                 "Main", "All", "Choose", "Color",
                 "Save location and names", "Save to", "Movies, Pictures, Music", "Download", "DCIM (with camera photos)", "For the module’s downloads and LIVE recordings. With DCIM, sounds still go to Music. TikTok’s own saving is not affected.", "Folder", "Inside the place above. Empty means TikTok. Use / for subfolders, for example TikTok/{author} for a folder per author.", "File name", "Empty keeps the usual TikTok_{id}_… names. Placeholders: {author} @username, {name} display name, {id} post ID, {date} and {time} when it was posted (or saved), {type} video, photo or audio, {quality} resolution, {n} number in a set. Files saved together get _01, _02… when {n} is missing.", "Example: %s",
                 "Account region", "App language", "Video region", "Caption language", "Tagged place", "Only shown in", "Distance from you", "Comment language", "Tap a line to copy it", "Copied",
-                "Flag details", "Tap an author's flag to see the account and video region, languages and tagged place. Needs Author's country", "%d hours", "Number of hours"
+                "Flag details", "Tap an author's flag to see the account and video region, languages and tagged place. Needs Author's country", "%d hours", "Number of hours",
+                "Duration", "Minimum seconds", "Maximum seconds"
         });
         TABLES.put("ru", new String[]{
                 "TiktokPatchXposed", "Лента",
@@ -209,7 +211,8 @@ final class I18n {
                 "Главное", "Все", "Выбор", "Цвет",
                 "Папка и имена файлов", "Куда сохранять", "Movies, Pictures, Music", "Download", "DCIM (к фото с камеры)", "Для загрузок модуля и записей эфиров. С DCIM звук всё равно сохраняется в Music. Собственное сохранение TikTok не меняется.", "Папка", "Внутри выбранного места. Пусто — TikTok. Подпапки через /, например TikTok/{author} — своя папка для каждого автора.", "Имя файла", "Пусто — обычные имена TikTok_{id}_…. Подстановки: {author} @имя пользователя, {name} отображаемое имя, {id} ID публикации, {date} и {time} — когда опубликовано (или сохранено), {type} video, photo или audio, {quality} разрешение, {n} номер в наборе. Если {n} нет, файлы из одного набора получают _01, _02…", "Пример: %s",
                 "Регион аккаунта", "Язык приложения", "Регион видео", "Язык подписи", "Отмеченное место", "Показывается только в", "Расстояние до вас", "Язык комментария", "Нажмите на строку, чтобы скопировать", "Скопировано",
-                "Подробности по флагу", "Нажмите на флаг автора, чтобы увидеть регион аккаунта и видео, языки и отмеченное место. Нужна «Страна автора»", "%d ч.", "Количество часов"
+                "Подробности по флагу", "Нажмите на флаг автора, чтобы увидеть регион аккаунта и видео, языки и отмеченное место. Нужна «Страна автора»", "%d ч.", "Количество часов",
+                "Длительность", "Минимум секунд", "Максимум секунд"
         });
         TABLES.put("uk", new String[]{
                 "TiktokPatchXposed", "Стрічка",
@@ -270,7 +273,8 @@ final class I18n {
                 "Головне", "Усі", "Вибір", "Колір",
                 "Папка й імена файлів", "Куди зберігати", "Movies, Pictures, Music", "Download", "DCIM (до фото з камери)", "Для завантажень модуля та записів ефірів. З DCIM звук однаково зберігається в Music. Власне збереження TikTok не змінюється.", "Папка", "Усередині вибраного місця. Порожньо — TikTok. Підпапки через /, наприклад TikTok/{author} — окрема папка для кожного автора.", "Ім’я файлу", "Порожньо — звичайні імена TikTok_{id}_…. Підстановки: {author} @ім’я користувача, {name} відображуване ім’я, {id} ID публікації, {date} і {time} — коли опубліковано (або збережено), {type} video, photo чи audio, {quality} роздільність, {n} номер у наборі. Якщо {n} немає, файли з одного набору отримують _01, _02…", "Приклад: %s",
                 "Регіон акаунта", "Мова застосунку", "Регіон відео", "Мова підпису", "Позначене місце", "Показується лише в", "Відстань до вас", "Мова коментаря", "Натисніть рядок, щоб скопіювати", "Скопійовано",
-                "Подробиці за прапором", "Натисніть на прапор автора, щоб побачити регіон акаунта й відео, мови та позначене місце. Потрібна «Країна автора»", "%d год.", "Кількість годин"
+                "Подробиці за прапором", "Натисніть на прапор автора, щоб побачити регіон акаунта й відео, мови та позначене місце. Потрібна «Країна автора»", "%d год.", "Кількість годин",
+                "Тривалість", "Мінімум секунд", "Максимум секунд"
         });
         TABLES.put("de", new String[]{
                 "TiktokPatchXposed", "Feed",
@@ -331,7 +335,8 @@ final class I18n {
                 "Wichtig", "Alle", "Auswahl", "Farbe",
                 "Speicherort und Dateinamen", "Speichern in", "Movies, Pictures, Music", "Download", "DCIM (bei den Kamerafotos)", "Für Downloads des Moduls und LIVE-Aufnahmen. Bei DCIM landen Töne weiterhin in Music. TikToks eigenes Speichern bleibt unverändert.", "Ordner", "Innerhalb des Orts oben. Leer bedeutet TikTok. Unterordner mit /, z. B. TikTok/{author} für einen Ordner pro Autor.", "Dateiname", "Leer behält die üblichen Namen TikTok_{id}_…. Platzhalter: {author} @Benutzername, {name} Anzeigename, {id} Beitrags-ID, {date} und {time} wann es gepostet (oder gespeichert) wurde, {type} video, photo oder audio, {quality} Auflösung, {n} Nummer in einer Reihe. Ohne {n} bekommen zusammen gespeicherte Dateien _01, _02…", "Beispiel: %s",
                 "Kontoregion", "App-Sprache", "Videoregion", "Sprache der Beschreibung", "Markierter Ort", "Nur sichtbar in", "Entfernung zu dir", "Sprache des Kommentars", "Tippe auf eine Zeile, um sie zu kopieren", "Kopiert",
-                "Flaggen-Details", "Tippe auf die Flagge eines Autors, um Konto- und Videoregion, Sprachen und markierten Ort zu sehen. Benötigt „Land des Autors“", "%d Stunden", "Anzahl der Stunden"
+                "Flaggen-Details", "Tippe auf die Flagge eines Autors, um Konto- und Videoregion, Sprachen und markierten Ort zu sehen. Benötigt „Land des Autors“", "%d Stunden", "Anzahl der Stunden",
+                "Dauer", "Mindestens Sekunden", "Höchstens Sekunden"
         });
         TABLES.put("es", new String[]{
                 "TiktokPatchXposed", "Feed",
@@ -392,7 +397,8 @@ final class I18n {
                 "Principal", "Todo", "Elegir", "Color",
                 "Ubicación y nombres", "Guardar en", "Movies, Pictures, Music", "Download", "DCIM (junto a las fotos de la cámara)", "Para las descargas del módulo y las grabaciones de LIVE. Con DCIM, los sonidos siguen yendo a Music. El guardado propio de TikTok no cambia.", "Carpeta", "Dentro del lugar de arriba. Vacío significa TikTok. Usa / para subcarpetas, por ejemplo TikTok/{author} para una carpeta por autor.", "Nombre de archivo", "Vacío mantiene los nombres habituales TikTok_{id}_…. Marcadores: {author} @usuario, {name} nombre visible, {id} ID de la publicación, {date} y {time} cuándo se publicó (o guardó), {type} video, photo o audio, {quality} resolución, {n} número dentro de un conjunto. Sin {n}, los archivos guardados juntos llevan _01, _02…", "Ejemplo: %s",
                 "Región de la cuenta", "Idioma de la app", "Región del vídeo", "Idioma de la descripción", "Lugar etiquetado", "Solo se muestra en", "Distancia a ti", "Idioma del comentario", "Toca una línea para copiarla", "Copiado",
-                "Detalles de la bandera", "Toca la bandera de un autor para ver la región de la cuenta y del vídeo, los idiomas y el lugar etiquetado. Requiere «País del autor»", "%d horas", "Número de horas"
+                "Detalles de la bandera", "Toca la bandera de un autor para ver la región de la cuenta y del vídeo, los idiomas y el lugar etiquetado. Requiere «País del autor»", "%d horas", "Número de horas",
+                "Duración", "Mínimo de segundos", "Máximo de segundos"
         });
         TABLES.put("pt", new String[]{
                 "TiktokPatchXposed", "Feed",
@@ -453,7 +459,8 @@ final class I18n {
                 "Principal", "Tudo", "Escolher", "Cor",
                 "Local e nomes", "Salvar em", "Movies, Pictures, Music", "Download", "DCIM (junto às fotos da câmera)", "Para os downloads do módulo e as gravações de LIVE. Com DCIM, os sons continuam indo para Music. O salvamento próprio do TikTok não muda.", "Pasta", "Dentro do local acima. Vazio significa TikTok. Use / para subpastas, por exemplo TikTok/{author} para uma pasta por autor.", "Nome do arquivo", "Vazio mantém os nomes de sempre TikTok_{id}_…. Marcadores: {author} @usuário, {name} nome de exibição, {id} ID da publicação, {date} e {time} quando foi publicado (ou salvo), {type} video, photo ou audio, {quality} resolução, {n} número dentro de um conjunto. Sem {n}, arquivos salvos juntos recebem _01, _02…", "Exemplo: %s",
                 "Região da conta", "Idioma do app", "Região do vídeo", "Idioma da legenda", "Local marcado", "Exibido apenas em", "Distância até você", "Idioma do comentário", "Toque numa linha para copiá-la", "Copiado",
-                "Detalhes da bandeira", "Toque na bandeira de um autor para ver a região da conta e do vídeo, os idiomas e o local marcado. Requer “País do autor”", "%d horas", "Número de horas"
+                "Detalhes da bandeira", "Toque na bandeira de um autor para ver a região da conta e do vídeo, os idiomas e o local marcado. Requer “País do autor”", "%d horas", "Número de horas",
+                "Duração", "Mínimo de segundos", "Máximo de segundos"
         });
         TABLES.put("fr", new String[]{
                 "TiktokPatchXposed", "Fil",
@@ -514,7 +521,8 @@ final class I18n {
                 "Essentiel", "Tout", "Choisir", "Couleur",
                 "Emplacement et noms", "Enregistrer dans", "Movies, Pictures, Music", "Download", "DCIM (avec les photos de l’appareil)", "Pour les téléchargements du module et les enregistrements de LIVE. Avec DCIM, les sons vont toujours dans Music. L’enregistrement propre à TikTok ne change pas.", "Dossier", "À l’intérieur de l’emplacement ci-dessus. Vide signifie TikTok. Utilisez / pour les sous-dossiers, par exemple TikTok/{author} pour un dossier par auteur.", "Nom du fichier", "Vide garde les noms habituels TikTok_{id}_…. Variables : {author} @nom d’utilisateur, {name} nom affiché, {id} ID de la publication, {date} et {time} quand elle a été publiée (ou enregistrée), {type} video, photo ou audio, {quality} résolution, {n} numéro dans un lot. Sans {n}, les fichiers enregistrés ensemble reçoivent _01, _02…", "Exemple : %s",
                 "Région du compte", "Langue de l’app", "Région de la vidéo", "Langue de la légende", "Lieu identifié", "Limitée à", "Distance jusqu’à vous", "Langue du commentaire", "Touchez une ligne pour la copier", "Copié",
-                "Détails du drapeau", "Touchez le drapeau d’un auteur pour voir la région du compte et de la vidéo, les langues et le lieu identifié. Nécessite « Pays de l’auteur »", "%d heures", "Nombre d’heures"
+                "Détails du drapeau", "Touchez le drapeau d’un auteur pour voir la région du compte et de la vidéo, les langues et le lieu identifié. Nécessite « Pays de l’auteur »", "%d heures", "Nombre d’heures",
+                "Durée", "Minimum de secondes", "Maximum de secondes"
         });
         TABLES.put("it", new String[]{
                 "TiktokPatchXposed", "Feed",
@@ -575,7 +583,8 @@ final class I18n {
                 "Principale", "Tutto", "Scegli", "Colore",
                 "Posizione e nomi", "Salva in", "Movies, Pictures, Music", "Download", "DCIM (con le foto della fotocamera)", "Per i download del modulo e le registrazioni delle LIVE. Con DCIM, i suoni vanno comunque in Music. Il salvataggio di TikTok non cambia.", "Cartella", "Dentro la posizione sopra. Vuoto significa TikTok. Usa / per le sottocartelle, ad esempio TikTok/{author} per una cartella per autore.", "Nome del file", "Vuoto mantiene i soliti nomi TikTok_{id}_…. Segnaposto: {author} @nome utente, {name} nome visualizzato, {id} ID del post, {date} e {time} quando è stato pubblicato (o salvato), {type} video, photo o audio, {quality} risoluzione, {n} numero in una serie. Senza {n}, i file salvati insieme ricevono _01, _02…", "Esempio: %s",
                 "Regione dell’account", "Lingua dell’app", "Regione del video", "Lingua della didascalia", "Luogo taggato", "Visibile solo in", "Distanza da te", "Lingua del commento", "Tocca una riga per copiarla", "Copiato",
-                "Dettagli della bandiera", "Tocca la bandiera di un autore per vedere la regione dell’account e del video, le lingue e il luogo taggato. Richiede «Paese dell’autore»", "%d ore", "Numero di ore"
+                "Dettagli della bandiera", "Tocca la bandiera di un autore per vedere la regione dell’account e del video, le lingue e il luogo taggato. Richiede «Paese dell’autore»", "%d ore", "Numero di ore",
+                "Durata", "Minimo di secondi", "Massimo di secondi"
         });
         TABLES.put("pl", new String[]{
                 "TiktokPatchXposed", "Kanał",
@@ -636,7 +645,8 @@ final class I18n {
                 "Główne", "Wszystko", "Wybór", "Kolor",
                 "Miejsce i nazwy plików", "Zapisuj w", "Movies, Pictures, Music", "Download", "DCIM (przy zdjęciach z aparatu)", "Dla pobrań modułu i nagrań LIVE. Przy DCIM dźwięki i tak trafiają do Music. Zapisywanie przez sam TikTok się nie zmienia.", "Folder", "Wewnątrz miejsca powyżej. Puste oznacza TikTok. Podfoldery przez /, np. TikTok/{author} – osobny folder dla każdego autora.", "Nazwa pliku", "Puste zostawia zwykłe nazwy TikTok_{id}_…. Zmienne: {author} @nazwa użytkownika, {name} wyświetlana nazwa, {id} ID posta, {date} i {time} – kiedy opublikowano (lub zapisano), {type} video, photo lub audio, {quality} rozdzielczość, {n} numer w zestawie. Bez {n} pliki zapisane razem dostają _01, _02…", "Przykład: %s",
                 "Region konta", "Język aplikacji", "Region filmu", "Język opisu", "Oznaczone miejsce", "Widoczny tylko w", "Odległość od ciebie", "Język komentarza", "Dotknij wiersza, aby go skopiować", "Skopiowano",
-                "Szczegóły flagi", "Dotknij flagi autora, aby zobaczyć region konta i filmu, języki i oznaczone miejsce. Wymaga „Kraj autora”", "%d godz.", "Liczba godzin"
+                "Szczegóły flagi", "Dotknij flagi autora, aby zobaczyć region konta i filmu, języki i oznaczone miejsce. Wymaga „Kraj autora”", "%d godz.", "Liczba godzin",
+                "Czas trwania", "Minimum sekund", "Maksimum sekund"
         });
         TABLES.put("tr", new String[]{
                 "TiktokPatchXposed", "Akış",
@@ -697,7 +707,8 @@ final class I18n {
                 "Ana", "Tümü", "Seç", "Renk",
                 "Kayıt yeri ve adlar", "Kaydetme yeri", "Movies, Pictures, Music", "Download", "DCIM (kamera fotoğraflarının yanında)", "Modülün indirmeleri ve LIVE kayıtları için. DCIM seçiliyken sesler yine Music klasörüne gider. TikTok’un kendi kaydetmesi değişmez.", "Klasör", "Yukarıdaki yerin içinde. Boş bırakılırsa TikTok. Alt klasörler için / kullanın, örneğin her yazar için ayrı klasör: TikTok/{author}.", "Dosya adı", "Boş bırakılırsa her zamanki TikTok_{id}_… adları kalır. Yer tutucular: {author} @kullanıcı adı, {name} görünen ad, {id} gönderi kimliği, {date} ve {time} paylaşıldığı (veya kaydedildiği) zaman, {type} video, photo veya audio, {quality} çözünürlük, {n} setteki sıra. {n} yoksa birlikte kaydedilen dosyalara _01, _02… eklenir.", "Örnek: %s",
                 "Hesap bölgesi", "Uygulama dili", "Video bölgesi", "Açıklama dili", "Etiketlenen yer", "Yalnızca şurada gösterilir", "Sana uzaklık", "Yorum dili", "Kopyalamak için bir satıra dokun", "Kopyalandı",
-                "Bayrak ayrıntıları", "Hesap ve video bölgesini, dilleri ve etiketlenen yeri görmek için bir yazarın bayrağına dokun. “Hesabın ülkesi” gerekir", "%d saat", "Saat sayısı"
+                "Bayrak ayrıntıları", "Hesap ve video bölgesini, dilleri ve etiketlenen yeri görmek için bir yazarın bayrağına dokun. “Hesabın ülkesi” gerekir", "%d saat", "Saat sayısı",
+                "Süre", "En az saniye", "En fazla saniye"
         });
         TABLES.put("id", new String[]{
                 "TiktokPatchXposed", "Feed",
@@ -758,7 +769,8 @@ final class I18n {
                 "Utama", "Semua", "Pilih", "Warna",
                 "Lokasi dan nama file", "Simpan ke", "Movies, Pictures, Music", "Download", "DCIM (bersama foto kamera)", "Untuk unduhan modul dan rekaman LIVE. Dengan DCIM, suara tetap masuk ke Music. Penyimpanan bawaan TikTok tidak berubah.", "Folder", "Di dalam lokasi di atas. Kosong berarti TikTok. Gunakan / untuk subfolder, misalnya TikTok/{author} untuk folder per kreator.", "Nama file", "Kosong mempertahankan nama biasa TikTok_{id}_…. Penanda: {author} @nama pengguna, {name} nama tampilan, {id} ID postingan, {date} dan {time} saat diposting (atau disimpan), {type} video, photo, atau audio, {quality} resolusi, {n} nomor dalam satu set. Tanpa {n}, file yang disimpan bersamaan mendapat _01, _02…", "Contoh: %s",
                 "Wilayah akun", "Bahasa aplikasi", "Wilayah video", "Bahasa keterangan", "Tempat yang ditandai", "Hanya ditampilkan di", "Jarak darimu", "Bahasa komentar", "Ketuk baris untuk menyalinnya", "Disalin",
-                "Detail bendera", "Ketuk bendera kreator untuk melihat wilayah akun dan video, bahasa, dan tempat yang ditandai. Memerlukan “Negara kreator”", "%d jam", "Jumlah jam"
+                "Detail bendera", "Ketuk bendera kreator untuk melihat wilayah akun dan video, bahasa, dan tempat yang ditandai. Memerlukan “Negara kreator”", "%d jam", "Jumlah jam",
+                "Durasi", "Minimum detik", "Maksimum detik"
         });
         TABLES.put("ar", new String[]{
                 "TiktokPatchXposed", "الموجز", "حظر الإعلانات", "الإعلانات في الموجز وعند بدء التشغيل وقوائم الفيديو الأخرى", "إخفاء البث المباشر",
@@ -848,7 +860,8 @@ final class I18n {
                 "الرئيسي", "الكل", "اختيار", "اللون",
                 "مكان الحفظ وأسماء الملفات", "الحفظ في", "Movies وPictures وMusic", "Download", "DCIM (مع صور الكاميرا)", "لتنزيلات الوحدة وتسجيلات البث المباشر. مع DCIM تبقى الأصوات في Music. حفظ TikTok الخاص لا يتغير.", "المجلد", "داخل المكان أعلاه. الفارغ يعني TikTok. استخدم / للمجلدات الفرعية، مثل TikTok/{author} لمجلد لكل صانع محتوى.", "اسم الملف", "الفارغ يُبقي الأسماء المعتادة TikTok_{id}_…. العناصر: {author} اسم المستخدم @، {name} الاسم الظاهر، {id} معرّف المنشور، {date} و{time} وقت النشر (أو الحفظ)، {type} video أو photo أو audio، {quality} الدقة، {n} الرقم ضمن المجموعة. بدون {n} تحصل الملفات المحفوظة معًا على _01 و_02…", "مثال: %s",
                 "منطقة الحساب", "لغة التطبيق", "منطقة الفيديو", "لغة الوصف", "المكان الموسوم", "يظهر فقط في", "المسافة عنك", "لغة التعليق", "اضغط على سطر لنسخه", "تم النسخ",
-                "تفاصيل العلم", "اضغط على علم صاحب الفيديو لعرض منطقة الحساب والفيديو واللغات والمكان الموسوم. يتطلب «بلد صاحب الفيديو»", "%d ساعة", "عدد الساعات"
+                "تفاصيل العلم", "اضغط على علم صاحب الفيديو لعرض منطقة الحساب والفيديو واللغات والمكان الموسوم. يتطلب «بلد صاحب الفيديو»", "%d ساعة", "عدد الساعات",
+                "المدة", "الحد الأدنى بالثواني", "الحد الأعلى بالثواني"
         });
         TABLES.put("zh", new String[]{
                 "TiktokPatchXposed", "推荐", "屏蔽广告", "推荐流、启动时和其他视频列表中的广告", "隐藏直播", "推荐流中的直播和 LIVE 按钮", "隐藏“你可能认识的人”", "根据你的通讯录推荐的视频",
@@ -912,7 +925,8 @@ final class I18n {
                 "常用", "全部", "选择", "颜色",
                 "保存位置和文件名", "保存到", "Movies、Pictures、Music", "Download", "DCIM（与相机照片放在一起）", "用于模块的下载和直播录制。选择 DCIM 时，音频仍保存到 Music。TikTok 自带的保存不受影响。", "文件夹", "位于上方所选位置内。留空即 TikTok。用 / 表示子文件夹，例如 TikTok/{author} 可为每位作者单独建文件夹。", "文件名", "留空则保持原来的 TikTok_{id}_… 命名。占位符：{author} @用户名，{name} 昵称，{id} 作品 ID，{date} 和 {time} 发布（或保存）时间，{type} video、photo 或 audio，{quality} 分辨率，{n} 组内序号。没有 {n} 时，一起保存的文件会加上 _01、_02…", "示例：%s",
                 "账号地区", "应用语言", "视频地区", "描述语言", "标记的地点", "仅在以下地区显示", "与你的距离", "评论语言", "点按某一行即可复制", "已复制",
-                "国旗详情", "点按作者的国旗，查看账号和视频地区、语言及标记的地点。需开启“作者所在国家”", "%d 小时", "小时数"
+                "国旗详情", "点按作者的国旗，查看账号和视频地区、语言及标记的地点。需开启“作者所在国家”", "%d 小时", "小时数",
+                "时长", "最少秒数", "最多秒数"
         });
     }
 
