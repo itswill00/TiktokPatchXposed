@@ -22,8 +22,12 @@ final class Analytics {
     /** The AppLog pack upload: a 10-argument int method holding both literals. */
     private static final String[] PACK = {"ss_app_log", "applog_forward"};
     private static final String FORWARD = "trySendForward start requestId={}, url={}";
-    /** What AppLog's server answers when it accepted a priority batch. */
-    private static final String ACCEPTED = "{\"message\":\"success\",\"magic_tag\":\"ss_app_log\"}";
+    /**
+     * A fabricated success body was never present in TikTok's dex (neither 47.6.3 nor 47.9.3).
+     * Only the status code is meaningful to the priority channel, so keep the body empty rather
+     * than pretending to know TikTok's answer format.
+     */
+    private static final String ACCEPTED = "";
 
     private Analytics() { }
 
