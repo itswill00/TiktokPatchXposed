@@ -21,8 +21,16 @@ public class LiveStreamsTest {
         LiveStreams.Option hd = option("hd", "https://cdn/hd.flv", 720, 1280, "h264");
         LiveStreams.Option fullHd = option("uhd", "https://cdn/uhd.flv", 1080, 1920, "h264");
         List<LiveStreams.Option> choices = LiveStreams.choices(Arrays.asList(audio, sd, origin, hd, fullHd));
-        assertEquals(Arrays.asList(fullHd, origin, hd, sd, audio), choices);
+        assertEquals(Arrays.asList(fullHd, hd, sd, origin, audio), choices);
         assertSame(fullHd, LiveStreams.best(choices));
+    }
+
+    @Test public void pickerAndRecorderAgreeOnH264BeforeResolution() {
+        LiveStreams.Option origin = option("origin", "https://cdn/origin.flv", 1080, 1920, "bytevc1");
+        LiveStreams.Option hd = option("hd", "https://cdn/hd.flv", 720, 1280, "h264");
+        List<LiveStreams.Option> choices = LiveStreams.choices(Arrays.asList(origin, hd));
+        assertSame(hd, choices.get(0));
+        assertSame(choices.get(0), LiveStreams.best(choices));
     }
 
     @Test public void dropsRepeatedLinksAndOptionsWithoutOne() {

@@ -51,12 +51,7 @@ final class LiveStreams {
         for (Option option : options) {
             if (option != null && DownloadFormat.webUrl(option.flv) && links.add(option.flv)) result.add(option);
         }
-        Collections.sort(result, (a, b) -> {
-            if (a.audioOnly() != b.audioOnly()) return a.audioOnly() ? 1 : -1;
-            if (a.lines() != b.lines()) return Integer.compare(b.lines(), a.lines());
-            if (a.h264() != b.h264()) return a.h264() ? -1 : 1;
-            return Integer.compare(rank(a.quality), rank(b.quality));
-        });
+        Collections.sort(result, LiveStreams::compare);
         return result;
     }
 
@@ -83,20 +78,20 @@ final class LiveStreams {
         return option.codec.toUpperCase(Locale.ROOT);
     }
 
-    /** The option to record, or null if none has an FLV link. */
+    /** The option to record, or null if none has an FLV link. Always the first choice with sound. */
     static Option best(List<Option> options) {
-        Option best = null;
-        for (Option option : options) {
-            if (option == null || !DownloadFormat.webUrl(option.flv) || option.audioOnly()) continue;
-            if (best == null || better(option, best)) best = option;
+        for (Option option : choices(options)) {
+            if (!option.audioOnly()) return option;
         }
-        return best;
+        return null;
     }
 
-    private static boolean better(Option a, Option b) {
-        if (a.h264() != b.h264()) return a.h264();
-        if (a.lines() != b.lines()) return a.lines() > b.lines();
-        return rank(a.quality) < rank(b.quality);
+    /** One ordering for both the picker and the recorder: sound first, then H.264, then size. */
+    private static int compare(Option a, Option b) {
+        if (a.audioOnly() != b.audioOnly()) return a.audioOnly() ? 1 : -1;
+        if (a.h264() != b.h264()) return a.h264() ? -1 : 1;
+        if (a.lines() != b.lines()) return Integer.compare(b.lines(), a.lines());
+        return Integer.compare(rank(a.quality), rank(b.quality));
     }
 
     private static int rank(String quality) {
