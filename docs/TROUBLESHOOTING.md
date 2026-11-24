@@ -28,7 +28,7 @@ If TikTok closes right after starting three times in a row, the next launch runs
 - Some elements drawn as images may keep TikTok's original colors even with a custom accent.
 - TikTok's servers may reject very long comments, multi-photo comments or hashtag changes even when the client allows them.
 - Region spoofing does not change your account region or IP address, so results are not guaranteed.
-- 🧪 features work but are not fully tested; new features are off by default.
+- Former experimental features are now enabled by default; if one misbehaves, switch it off in the module settings.
 
 ## Reporting a bug
 

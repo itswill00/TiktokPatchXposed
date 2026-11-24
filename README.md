@@ -35,7 +35,7 @@ An [LSPosed](https://github.com/JingMatrix/LSPosed) module for TikTok. It remove
 | **Region & streaks** | SIM country, recommendations in your language, auto streaks with flames or stickers |
 | **Experiments** | hidden TikTok features, no forced login, no hashtag limit, camera extras |
 
-See the [full feature reference](docs/FEATURES.md). Features marked 🧪 work but are not fully tested. All new features are off by default.
+See the [full feature reference](docs/FEATURES.md). Former experimental features are enabled by default; other switches stay optional.
 
 ## Screenshots
 
@@ -70,7 +70,7 @@ See the [full feature reference](docs/FEATURES.md). Features marked 🧪 work bu
 
 | Document | About |
 | --- | --- |
-| [Full feature reference](docs/FEATURES.md) | Every feature by area, with the 🧪 legend |
+| [Full feature reference](docs/FEATURES.md) | Every feature by area, no experimental labels |
 | [Building](docs/BUILDING.md) | JDK/SDK, `build.sh`, Telegram upload, Gradle and CI |
 | [Troubleshooting](docs/TROUBLESHOOTING.md) | Common problems, safe mode, limitations, bug reports |
 | [Contributing](CONTRIBUTING.md) | Branches, signed commits, tests, code layout |

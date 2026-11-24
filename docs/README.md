@@ -2,7 +2,7 @@
 
 | Document | Description |
 | --- | --- |
-| [Features](FEATURES.md) | Full English feature reference, with the 🧪 experimental legend. |
+| [Features](FEATURES.md) | Full English feature reference, all features listed as stable. |
 | [Функции](FEATURES-RU.md) | Полный список функций на русском языке. |
 | [Building](BUILDING.md) | JDK/SDK requirements, `build.sh` options, Telegram upload setup, manual Gradle commands, CI. |
 | [Troubleshooting](TROUBLESHOOTING.md) | Common problems, safe mode, known limitations, bug reports. |
